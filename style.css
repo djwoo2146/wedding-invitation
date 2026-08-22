@@ -1,5 +1,5 @@
 /* =========================================================
-   Wedding Invitation — 김민준 ♡ 박서연 (2026.10.17)
+   Wedding Invitation — 정재희 ♡ 우다정 (2026.11.08)
    Concept: 조용히 피어나는 가을의 약속
    Palette: Sage × Dusty Rose duotone with warm ivory base
    ========================================================= */
@@ -173,12 +173,11 @@ body::before {
   width: 100%;
   max-width: 280px;
   height: auto;
-  margin: 28px auto;
+  margin: 0 auto;
   opacity: 0.85;
   mix-blend-mode: multiply;
+  border-radius: 12px;
 }
-.divider-narrow { max-width: 180px; opacity: 0.7; }
-
 .script { font-family: var(--font-script); }
 .en { font-family: var(--font-en-serif); }
 .muted { color: var(--color-muted); font-size: 13px; }
@@ -227,15 +226,41 @@ body::before {
   min-height: 100vh;
   overflow: hidden;
 }
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5vh;
+}
+
+.hero-arch {
+  --arch-w: clamp(220px, 68vw, 320px);
+  position: relative;
+  width: var(--arch-w);
+  aspect-ratio: 3 / 3.9;
+  border-radius: calc(var(--arch-w) / 2) calc(var(--arch-w) / 2) 4px 4px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(46, 42, 36, 0.18);
+  border: 1px solid rgba(140, 107, 79, 0.25);
+}
+
 .hero-illustration {
   width: 100%;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center top;
   display: block;
   animation: kenBurns var(--dur-ken-burns) ease-in-out infinite alternate;
   will-change: transform;
 }
+
 @keyframes kenBurns {
   0%   { transform: scale(1.0) translateY(0); }
   100% { transform: scale(1.04) translateY(-1%); }
@@ -248,7 +273,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 var(--side-pad) 22vh;
+  padding: 0 var(--side-pad) 11vh;
   text-align: center;
 }
 
@@ -264,9 +289,10 @@ body::before {
   font-size: 11px;
   letter-spacing: 0.45em;
   color: var(--color-muted);
-  margin-bottom: 24px;
+  margin-top: 24px;
   line-height: 1.8;
 }
+
 .hero-savedate-num {
   display: inline-block;
   font-size: 13px;
@@ -471,24 +497,6 @@ body::before {
 .calendar-section {
   background: var(--color-bg);
   position: relative;
-}
-.corner-deco {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 110px;
-  height: 110px;
-  opacity: 0.5;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
-.corner-deco-flip {
-  left: auto;
-  right: 0;
-  top: 0;
-  transform: scaleX(-1);
-  width: 110px;
-  height: 110px;
 }
 
 .date-headline {
@@ -819,6 +827,7 @@ body::before {
 }
 .bus-blue  { background: #3F6BB6; }
 .bus-green { background: #5C9F5F; }
+.bus-vivid-green { background: #87c700; }
 .bus-red   { background: #B6463F; }
 
 /* ==========================================================

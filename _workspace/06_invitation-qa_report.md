@@ -14,15 +14,15 @@
 
 | 항목 | 컨셉시트 값 | HTML 값 | 결과 |
 |------|------------|---------|------|
-| 신랑 이름 | 김민준 | 김민준 (7회 등장) | PASS |
-| 신부 이름 | 박서연 | 박서연 (7회 등장) | PASS |
+| 신랑 이름 | 정재희 | 정재희 (7회 등장) | PASS |
+| 신부 이름 | 우다정 | 우다정 (7회 등장) | PASS |
 | 신랑 부 | 김재현 | 김재현 (3회 등장) | PASS |
 | 신랑 모 | 이수진 | 이수진 (3회 등장) | PASS |
 | 신부 부 | 박정훈 | 박정훈 (3회 등장) | PASS |
 | 신부 모 | 최은영 | 최은영 (3회 등장) | PASS |
 | 출생순서 | 장남 / 장녀 | "장남 / 장녀" 카드에 정확 표기 | PASS |
-| 예식일 | 2026-10-17 토요일 | "2026년 10월 17일 토요일" (6회) + cal data-target="2026-10-17" | PASS |
-| 예식 시각 | 14:00 (오후 2시) | "오후 2시" (hero, calendar, dday-sub) | PASS |
+| 예식일 | 2026-11-08 일요일 | "2026년 11월 08일 일요일" (6회) + cal data-target="2026-11-08" | PASS |
+| 예식 시각 | 14:00 (오후 1시) | "오후 1시" (hero, calendar, dday-sub) | PASS |
 | 장소 | 그랜드 인터컨티넨탈 서울 파르나스 5층 그랜드볼룸 | 한 줄 풀네임 + venue/hall 분리 모두 노출 | PASS |
 | 주소 | 서울특별시 강남구 테헤란로 521 | 정확 표기 (venue-addr + 자가용 안내) | PASS |
 | primary 컬러 | #C9A2A2 (dusty rose) | --color-primary: #C9A2A2 | PASS |
@@ -42,8 +42,8 @@
 | 카피: 공유 메시지 | "저희의 소식을..." | share-message에 반영 | PASS |
 | 카피: 한 줄 영문 보조 | "A quiet promise, in autumn light." | greeting-en에 반영 | PASS |
 | 카피: D-day 라벨 | "민준 · 서연의 결혼식까지" | dday-label에 정확 반영 | PASS |
-| og:title | 김민준 ♡ 박서연 결혼합니다 | meta og:title 정확 일치 (15자) | PASS |
-| og:description | 2026년 10월 17일... 그랜드볼룸 | meta og:description 정확 일치 | PASS |
+| og:title | 정재희 ♡ 우다정 결혼합니다 | meta og:title 정확 일치 (15자) | PASS |
+| og:description | 2026년 11월 08일... 그랜드볼룸 | meta og:description 정확 일치 | PASS |
 | 이미지 9장 매니페스트 | 9장 모두 PNG | images/ 폴더에 9장 모두 존재 + HTML 참조 | PASS |
 | 이미지 alt 매니페스트 일치 | 매니페스트 권장 alt | hero/gallery 5장 모두 매니페스트 alt 그대로 사용 | PASS |
 

@@ -1,4 +1,4 @@
-# Frontend Developer Summary — 김민준 ♡ 박서연 청첩장
+# Frontend Developer Summary — 정재희 ♡ 우다정 청첩장
 
 > 산출 일자: 2026-04-29
 > 산출물: `index.html`, `style.css`, `script.js`
@@ -154,7 +154,7 @@ npx http-server .
 - [ ] 시스템 설정에서 "동작 줄이기" ON → 페이지 reload → 파티클·메시·ken-burns 모두 정지, 정적 SVG 꽃잎 4개 표시 확인
 - [ ] 계좌 복사 6개 모두 동작 (HTTPS / file:// 양쪽 폴백 검증)
 - [ ] 갤러리 ←/→ 키보드 / 자동 5s / 인터랙션 시 10s 일시정지
-- [ ] D-day 숫자 카운트업 (오늘 기준 2026-10-17까지 일수)
+- [ ] D-day 숫자 카운트업 (오늘 기준 2026-11-08까지 일수)
 - [ ] og:image 카카오톡 공유 미리보기 (실제 배포 URL 필요)
 - [ ] Lighthouse Mobile ≥ 85 (Performance / Accessibility / Best Practices / SEO)
 
