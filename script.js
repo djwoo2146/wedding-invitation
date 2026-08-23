@@ -14,7 +14,7 @@
   const GUESTBOOK_URL    = ''; // placeholder: 외부 방명록 폼 URL
   const SHARE_TITLE      = '정재희 ♡ 우다정 결혼합니다';
   const SHARE_DESC       = '2026년 11월 08일 일요일 오후 1시\n케이터틀 별관 라페네홀';
-  const SHARE_IMAGE      = location.origin + location.pathname.replace(/\/[^/]*$/, '/') + 'images/og-thumbnail.png';
+  const SHARE_IMAGE      = location.origin + location.pathname.replace(/\/[^/]*$/, '/') + 'images/og-thumbnail.jpg';
   const TARGET_DATE_STR  = '2026-11-08';
   const TARGET_HOUR      = 1;
 
@@ -637,6 +637,27 @@
     }
   }
 
+  function initKakaoMap() {
+    const mapContainer = document.getElementById('map');
+
+    if (!mapContainer || !window.kakao || !window.kakao.maps) {
+      console.warn('카카오맵 SDK가 로드되지 않았습니다.');
+      return;
+    }
+
+    const venuePosition = new kakao.maps.LatLng(37.5484, 126.9388);
+
+    const map = new kakao.maps.Map(mapContainer, {
+      center: venuePosition,
+      level: 3
+    });
+
+    new kakao.maps.Marker({
+      map,
+      position: venuePosition
+    });
+  }
+
   // ---------------------------------------------------------
   // INIT
   // ---------------------------------------------------------
@@ -651,6 +672,7 @@
     setupMusic();
     setupShare();
     setupExternalLinks();
+    initKakaoMap();
 
     // reduced-motion 변경 시 단순 reload (모션 일관성 보장)
     if (reducedMotion.addEventListener) {
