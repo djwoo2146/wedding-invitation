@@ -647,16 +647,24 @@
       return;
     }
 
-    const venuePosition = new kakao.maps.LatLng(37.5484, 126.9388);
+    kakao.maps.load(() => {
+      const venuePosition = new kakao.maps.LatLng(37.5484, 126.9388);
 
-    const map = new kakao.maps.Map(mapContainer, {
-      center: venuePosition,
-      level: 3
-    });
+      const map = new kakao.maps.Map(mapContainer, {
+        center: venuePosition,
+        level: 3
+      });
 
-    new kakao.maps.Marker({
-      map,
-      position: venuePosition
+      new kakao.maps.Marker({
+        map,
+        position: venuePosition
+      });
+
+      // 숨겨진 영역에서 생성되는 경우 표시 영역을 다시 계산
+      setTimeout(() => {
+        map.relayout();
+        map.setCenter(venuePosition);
+      }, 100);
     });
   }
 
@@ -667,7 +675,6 @@
     }
 
     if (!Kakao.isInitialized()) {
-      console.log('초기화 되었니?');
       Kakao.init(KAKAO_JS_KEY);
     }
 
