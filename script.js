@@ -13,7 +13,7 @@
   const RSVP_FORM_URL    = ''; // placeholder: Tally / Google Form / FormSubmit URL
   const GUESTBOOK_URL    = ''; // placeholder: 외부 방명록 폼 URL
   const SHARE_TITLE      = '정재희 ♡ 우다정 결혼합니다';
-  const SHARE_DESC       = '2026년 11월 08일 일요일 오후 1시\n케이터틀 1F 별관 라페네홀';
+  const SHARE_DESC       = '2026년 11월 08일 일요일 오후 1시\n케이터틀 별관 라페네홀';
   const SHARE_IMAGE      = location.origin + location.pathname.replace(/\/[^/]*$/, '/') + 'images/og-thumbnail.png';
   const TARGET_DATE_STR  = '2026-11-08';
   const TARGET_HOUR      = 1;
