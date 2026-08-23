@@ -561,8 +561,6 @@
   // ---------------------------------------------------------
   // 10. Share (Kakao / link copy) (motion §3-7)
   // ---------------------------------------------------------
-
-  const SHARE_URL = 'https://djwoo2146.github.io/wedding-invitation/';
   function setupShare() {
     const btnLink = $('#share-link');
     const btnKakao = $('#share-kakao');
@@ -574,8 +572,7 @@
         return;
       }
 
-      //const shareUrl = `${location.origin}${location.pathname}`;
-      const shareUrl = SHARE_URL;
+      const shareUrl = `${location.origin}${location.pathname}`;
 
       try {
         window.Kakao.Share.sendDefault({
@@ -609,7 +606,7 @@
 
     btnLink?.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(SHARE_URL);
+        await navigator.clipboard.writeText(location.href);
         haptic(15);
         showToast('청첩장 링크가 복사되었습니다');
       } catch (error) {
