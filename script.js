@@ -9,7 +9,7 @@
   // ---------------------------------------------------------
   // PLACEHOLDERS — 실제 운영 시 아래 값을 채워주세요.
   // ---------------------------------------------------------
-  const KAKAO_JS_KEY     = ''; // placeholder: 카카오 JavaScript 키 (https://developers.kakao.com/)
+  const KAKAO_JS_KEY     = 'eecb0b4ea5c69274063e4e6927281de9'; // placeholder: 카카오 JavaScript 키 (https://developers.kakao.com/)
   const RSVP_FORM_URL    = ''; // placeholder: Tally / Google Form / FormSubmit URL
   const GUESTBOOK_URL    = ''; // placeholder: 외부 방명록 폼 URL
   const SHARE_TITLE      = '정재희 ♡ 우다정 결혼합니다';

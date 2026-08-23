@@ -500,7 +500,7 @@ body::before {
 }
 
 .date-headline {
-  font-family: var(--font-en-serif);
+  font-family: var(--font-ko-sans);
   font-size: 18px;
   color: var(--color-text);
   letter-spacing: 0.06em;
@@ -574,7 +574,7 @@ body::before {
   margin-bottom: 8px;
 }
 .dday {
-  font-family: var(--font-en-serif);
+  font-family: var(--font-ko-sans);
   font-size: 32px;
   color: var(--color-accent);
   letter-spacing: 0.06em;
