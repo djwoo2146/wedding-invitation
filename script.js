@@ -562,51 +562,57 @@
   // 10. Share (Kakao / link copy) (motion §3-7)
   // ---------------------------------------------------------
   function setupShare() {
-    const btnLink  = $('#share-link');
+    const btnLink = $('#share-link');
     const btnKakao = $('#share-kakao');
+
+    btnKakao?.addEventListener('click', () => {
+      if (!window.Kakao?.isInitialized()) {
+        showToast('카카오톡 공유를 사용할 수 없습니다');
+        console.error('Kakao SDK가 초기화되지 않았습니다.');
+        return;
+      }
+
+      const shareUrl = `${location.origin}${location.pathname}`;
+
+      try {
+        window.Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: SHARE_TITLE,
+            description: SHARE_DESC,
+            imageUrl: SHARE_IMAGE,
+            link: {
+              mobileWebUrl: shareUrl,
+              webUrl: shareUrl
+            }
+          },
+          buttons: [
+            {
+              title: '청첩장 보기',
+              link: {
+                mobileWebUrl: shareUrl,
+                webUrl: shareUrl
+              }
+            }
+          ]
+        });
+
+        haptic(15);
+      } catch (error) {
+        console.error('카카오톡 공유 실패:', error);
+        showToast('카카오톡 공유에 실패했습니다');
+      }
+    });
 
     btnLink?.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(location.href);
         haptic(15);
         showToast('청첩장 링크가 복사되었습니다');
-      } catch (e) {
+      } catch (error) {
         showToast('복사에 실패했습니다');
       }
     });
-
-    btnKakao?.addEventListener('click', () => {
-    haptic(15);
-
-    if (!window.Kakao || !Kakao.isInitialized()) {
-      showToast('카카오톡 공유를 사용할 수 없습니다');
-      return;
-    }
-
-    const shareUrl = window.location.href;
-
-    Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: SHARE_TITLE,
-        description: SHARE_DESC,
-        imageUrl: SHARE_IMAGE,
-        link: {
-          mobileWebUrl: shareUrl,
-          webUrl: shareUrl
-        }
-      },
-      buttons: [
-        {
-          title: '청첩장 보기',
-          link: {
-            mobileWebUrl: shareUrl,
-            webUrl: shareUrl
-          }
-        }
-      ]
-    });
-  });
   }
 
   // ---------------------------------------------------------
@@ -648,23 +654,42 @@
     }
 
     kakao.maps.load(() => {
-      const venuePosition = new kakao.maps.LatLng(37.5523359, 126.9378469);
+      const fallbackPosition = new kakao.maps.LatLng(
+        37.5523359,
+        126.9378469
+      );
 
       const map = new kakao.maps.Map(mapContainer, {
-        center: venuePosition,
+        center: fallbackPosition,
         level: 3
       });
 
-      new kakao.maps.Marker({
-        map,
-        position: venuePosition
-      });
+      const geocoder = new kakao.maps.services.Geocoder();
 
-      // 숨겨진 영역에서 생성되는 경우 표시 영역을 다시 계산
-      setTimeout(() => {
-        map.relayout();
-        map.setCenter(venuePosition);
-      }, 100);
+      geocoder.addressSearch('서울특별시 마포구 백범로 23', (result, status) => {
+        let position = fallbackPosition;
+
+        if (status === kakao.maps.services.Status.OK && result.length > 0) {
+          position = new kakao.maps.LatLng(
+            Number(result[0].y),
+            Number(result[0].x)
+          );
+        } else {
+          console.warn('주소 검색 실패:', status);
+        }
+
+        map.setCenter(position);
+
+        new kakao.maps.Marker({
+          map,
+          position
+        });
+
+        setTimeout(() => {
+          map.relayout();
+          map.setCenter(position);
+        }, 100);
+      });
     });
   }
 
@@ -674,11 +699,12 @@
       return false;
     }
 
-    if (!Kakao.isInitialized()) {
-      Kakao.init(KAKAO_JS_KEY);
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(KAKAO_JS_KEY);
     }
 
-    return Kakao.isInitialized();
+    console.log('Kakao initialized:', window.Kakao.isInitialized());
+    return window.Kakao.isInitialized();
   }
   // ---------------------------------------------------------
   // INIT
