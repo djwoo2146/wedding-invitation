@@ -648,7 +648,7 @@
     }
 
     kakao.maps.load(() => {
-      const venuePosition = new kakao.maps.LatLng(37.5484, 126.9388);
+      const venuePosition = new kakao.maps.LatLng(37.5523359, 126.9378469);
 
       const map = new kakao.maps.Map(mapContainer, {
         center: venuePosition,
