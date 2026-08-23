@@ -237,7 +237,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-bottom: 5vh;
+  margin-bottom: 1vh;
 }
 
 .hero-arch {
@@ -303,7 +303,7 @@ body::before {
 
 .hero-names {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 4px;
   font-weight: 400;
