@@ -660,10 +660,24 @@
     });
   }
 
+  function initKakaoSDK() {
+    if (!window.Kakao) {
+      console.warn('카카오 JavaScript SDK가 로드되지 않았습니다.');
+      return false;
+    }
+
+    if (!Kakao.isInitialized()) {
+      console.log('초기화 되었니?');
+      Kakao.init(KAKAO_JS_KEY);
+    }
+
+    return Kakao.isInitialized();
+  }
   // ---------------------------------------------------------
   // INIT
   // ---------------------------------------------------------
   function init() {
+    initKakaoSDK();
     setupHero();
     setupReveal();
     setupPetals();
