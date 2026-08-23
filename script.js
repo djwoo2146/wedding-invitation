@@ -576,35 +576,37 @@
     });
 
     btnKakao?.addEventListener('click', () => {
-      haptic(15);
-      // Kakao SDK 사용 가능 시
-      if (window.Kakao && KAKAO_JS_KEY) {
-        try {
-          if (!window.Kakao.isInitialized()) window.Kakao.init(KAKAO_JS_KEY);
-          window.Kakao.Share.sendDefault({
-            objectType: 'feed',
-            content: {
-              title: SHARE_TITLE,
-              description: SHARE_DESC,
-              imageUrl: SHARE_IMAGE,
-              link: { mobileWebUrl: location.href, webUrl: location.href }
-            },
-            buttons: [
-              { title: '청첩장 보기', link: { mobileWebUrl: location.href, webUrl: location.href } }
-            ]
-          });
-          return;
-        } catch (e) { /* fallthrough */ }
-      }
-      // Web Share API 폴백
-      if (navigator.share) {
-        navigator.share({ title: SHARE_TITLE, text: SHARE_DESC, url: location.href }).catch(() => {});
-        return;
-      }
-      // 최종 폴백: 링크 복사
-      navigator.clipboard?.writeText(location.href);
-      showToast('청첩장 링크가 복사되었습니다');
+    haptic(15);
+
+    if (!window.Kakao || !Kakao.isInitialized()) {
+      showToast('카카오톡 공유를 사용할 수 없습니다');
+      return;
+    }
+
+    const shareUrl = window.location.href;
+
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: SHARE_TITLE,
+        description: SHARE_DESC,
+        imageUrl: SHARE_IMAGE,
+        link: {
+          mobileWebUrl: shareUrl,
+          webUrl: shareUrl
+        }
+      },
+      buttons: [
+        {
+          title: '청첩장 보기',
+          link: {
+            mobileWebUrl: shareUrl,
+            webUrl: shareUrl
+          }
+        }
+      ]
     });
+  });
   }
 
   // ---------------------------------------------------------
